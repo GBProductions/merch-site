@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { v4 } from 'uuid';
 
-function NewItemForm(props){
+function NewGadgetForm(props){
 
     function handleNewGadgetFormSubmission(event) {
         event.preventDefault();
-        props.onNewItemCreation({name: event.target.name.value, quantity: event.target.quantity.valueAsNumber, description: event.target.description.value, id: v4()});
+        props.onNewGadgetCreation({name: event.target.name.value, quantity: event.target.quantity.valueAsNumber, description: event.target.description.value, id: v4()});
     }
 
     return (
@@ -31,9 +31,9 @@ function NewItemForm(props){
 }
 
 
-NewItemForm.propTypes ={
-    onNewItemCreation: PropTypes.func
+NewGadgetForm.propTypes ={
+    onNewGadgetCreation: PropTypes.func
 };
 
 
-export default NewItemForm;
+export default NewGadgetForm;

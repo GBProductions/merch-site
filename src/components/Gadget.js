@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Item(props){
+function Gadget(props){
   return (
     <React.Fragment>
       <p><strong>Gadget Name: </strong> {props.name}</p>
@@ -12,10 +12,10 @@ function Item(props){
   );
 }
 
-Item.propTypes = {
+Gadget.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   quantity: PropTypes.number
 };
 
-export default Item;
+export default Gadget;

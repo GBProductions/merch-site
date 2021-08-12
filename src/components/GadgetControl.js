@@ -1,19 +1,19 @@
 import React from 'react';
-import ItemList from './ItemList';
-import NewItemForm from './NewItemForm';
+import GadgetList from './GadgetList';
+import NewGadgetForm from './NewGadgetForm';
 
-class ItemControl extends React.Component {
+class GadgetControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      itemCollection: []
+      gadgetCollection: []
     };
   }
 
-  handleAddingNewItemToCollection = (newItem) => {
-    const newItemCollection = this.state.itemCollection.concat(newItem);
-    this.setState({itemCollection: newItemCollection,
+  handleAddingNewGadgetToCollection = (newGadget) => {
+    const newGadgetCollection = this.state.gadgetCollection.concat(newGadget);
+    this.setState({gadgetCollection: newGadgetCollection,
                   formVisibleOnPage: false });
   }
 
@@ -28,10 +28,10 @@ class ItemControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewItemForm  onNewItemCreation={this.handleAddingNewItemToCollection}/>
+      currentlyVisibleState = <NewGadgetForm  onNewGadgetCreation={this.handleAddingNewGadgetToCollection}/>
       buttonText = "Return to Gadget List";
     } else {
-      currentlyVisibleState = <ItemList itemList={this.state.itemCollection}/>
+      currentlyVisibleState = <GadgetList gadgetList={this.state.gadgetCollection}/>
       buttonText = "Add Gadget";
     }
     return (
@@ -43,4 +43,4 @@ class ItemControl extends React.Component {
   }
 }
 
-export default ItemControl;
+export default GadgetControl;
