@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 function Item(props){
   return (
     <React.Fragment>
-      <p>{props.name}</p>
-      <p>{props.description}</p>
-      <p>{props.quantity}</p>
+      <p><strong>Gadget Name: </strong> {props.name}</p>
+      <p><strong>Description: </strong> {props.description}</p>
+      <p><strong>Quantity Available: </strong> {props.quantity}</p>
       <hr />
     </React.Fragment>
   );

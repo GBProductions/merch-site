@@ -3,7 +3,7 @@ import React from "react";
 function Header(){
   return (
     <React.Fragment>
-      <h1>Merch Site</h1>
+      <h1>Huntsman Tailor</h1>
     </React.Fragment>
 
   );
