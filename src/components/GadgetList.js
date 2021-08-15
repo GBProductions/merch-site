@@ -7,18 +7,22 @@ function GadgetList(props){
   return (
     <React.Fragment>
       <hr />
-      {props.gadgetList.map((gadget, index) => 
-        <Gadget name={gadget.name}
+      {props.gadgetList.map((gadget) => 
+        <Gadget 
+          whenGadgetClicked = { props.onGadgetSelection }
+          name={gadget.name}
           description={gadget.description}
           quantity={gadget.quantity}
-          key={index} />
+          id={gadget.id}
+          key={gadget.id} />
       )}
     </React.Fragment>
   );
 }
 
 GadgetList.propTypes = {
-  gadgetList: PropTypes.array
+  gadgetList: PropTypes.array,
+  onGadgetSelection: PropTypes.func
 }
 
 export default GadgetList;

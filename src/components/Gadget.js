@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 function Gadget(props){
   return (
     <React.Fragment>
-      <p><strong>Gadget Name: </strong> {props.name}</p>
-      <p><strong>Description: </strong> {props.description}</p>
-      <p><strong>Quantity Available: </strong> {props.quantity}</p>
-      <hr />
+      <div onClick = {() => props.whenGadgetClicked(props.id)}>
+        <p><strong>Gadget Name: </strong> {props.name}</p>
+        {/* <p><strong>Quantity Available: </strong> {props.quantity}</p> */}
+        <hr />
+      </div>
     </React.Fragment>
   );
 }
@@ -15,7 +16,9 @@ function Gadget(props){
 Gadget.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  quantity: PropTypes.number
+  quantity: PropTypes.number,
+  id: PropTypes.string,
+  whenGadgetClicked: PropTypes.func
 };
 
 export default Gadget;

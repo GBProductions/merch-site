@@ -1,14 +1,22 @@
 import React from 'react';
 import GadgetList from './GadgetList';
 import NewGadgetForm from './NewGadgetForm';
+import GadgetDetail from './GadgetDetail';
 
 class GadgetControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      gadgetCollection: []
+      gadgetCollection: [],
+      selectedGadget: null,
+      gadgetQuantity: 0
     };
+  }
+
+  handleChangingSelectedGadget = (id) => {
+    const selectedGadget = this.state.gadgetCollection.filter(gadget => gadget.id === id)[0];
+    this.setState({selectedGadget: selectedGadget});
   }
 
   handleAddingNewGadgetToCollection = (newGadget) => {
@@ -18,20 +26,32 @@ class GadgetControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedGadget != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedGadget: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   render() {
 
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+
+    if (this.state.selectedGadget != null) {
+      currentlyVisibleState = <GadgetDetail gadget = {this.state.selectedGadget} />
+      buttonText = "Return to Gadget List"
+    }
+     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewGadgetForm  onNewGadgetCreation={this.handleAddingNewGadgetToCollection}/>
       buttonText = "Return to Gadget List";
     } else {
-      currentlyVisibleState = <GadgetList gadgetList={this.state.gadgetCollection}/>
+      currentlyVisibleState = <GadgetList gadgetList={this.state.gadgetCollection} onGadgetSelection = {this.handleChangingSelectedGadget} />
       buttonText = "Add Gadget";
     }
     return (
