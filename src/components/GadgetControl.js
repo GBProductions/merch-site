@@ -3,6 +3,7 @@ import GadgetList from './GadgetList';
 import NewGadgetForm from './NewGadgetForm';
 import GadgetDetail from './GadgetDetail';
 
+
 class GadgetControl extends React.Component {
   constructor(props) {
     super(props);
@@ -10,9 +11,24 @@ class GadgetControl extends React.Component {
       formVisibleOnPage: false,
       gadgetCollection: [],
       selectedGadget: null,
-      gadgetQuantity: 0
+      newGadgetQuantity: 0
     };
   }
+
+  // handleBuyingSelectedGadget = (gadget) => {
+  //   console.log("handleBuyingSelectedGadget reached");
+  //   this.setState(prevState => ({
+  //     newGadgetQuantity: !prevState.
+  //   }));
+
+
+  //   // console.log(id)
+  //   console.log(gadget.quantity);
+  //   this.setState({newGadgetQuantity: 1});
+  //   console.log(this.state)
+  //   // const newGadgetQuantity = this.state.gadgetCollection.filter(gadget => gadget.id === id)[0];
+  //   // this.setState({new})
+  // }
 
   handleChangingSelectedGadget = (id) => {
     const selectedGadget = this.state.gadgetCollection.filter(gadget => gadget.id === id)[0];
@@ -44,7 +60,9 @@ class GadgetControl extends React.Component {
     let buttonText = null;
 
     if (this.state.selectedGadget != null) {
-      currentlyVisibleState = <GadgetDetail gadget = {this.state.selectedGadget} />
+      currentlyVisibleState = <GadgetDetail gadget = {this.state.selectedGadget}
+                                            // onClickingBuy = {this.handleBuyingSelectedGadget} 
+                                            />
       buttonText = "Return to Gadget List"
     }
      else if (this.state.formVisibleOnPage) {
