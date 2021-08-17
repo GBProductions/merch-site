@@ -21,9 +21,11 @@ function NewGadgetForm(props){
                     type="number"
                     name="quantity"
                     placeholder="Quantity in Stock" />
+                <br />
                 <textarea
                     name="description"
                     placeholder="Describe the gadget." />
+                <br />
                 <button type="submit">Submit</button>
             </form>
         </React.Fragment>
