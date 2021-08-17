@@ -6,17 +6,26 @@ function GadgetDetail(props) {
 
   function handleBuyingGadget(event) {
     event.preventDefault();
-    console.log(props.gadget)
-    if (props.gadget.quantity === 0) {
-      let newQuantity = "out of stock";
-      console.log(newQuantity);
-      return newQuantity;
+    if(props.gadget.quantity === 1 || props.gadget.quantity === "out of stock") {
+      props.onClickingBuy({name: props.gadget.name, description: props.gadget.description, quantity: "out of stock", id: props.gadget.id });
     } else {
-      let newQuantity = props.gadget.quantity - 1;
-      console.log(newQuantity);
-      return newQuantity;
-    }   
+      props.onClickingBuy({name: props.gadget.name, description: props.gadget.description, quantity: props.gadget.quantity - 1, id: props.gadget.id });
+    }
   }
+
+  // function handleBuyingGadget(event) {
+  //   event.preventDefault();
+  //   console.log(props.gadget)
+  //   if (props.gadget.quantity === 0) {
+  //     let newQuantity = "out of stock";
+  //     console.log(newQuantity);
+  //     return newQuantity;
+  //   } else {
+  //     let newQuantity = props.gadget.quantity - 1;
+  //     console.log(newQuantity);
+  //     return newQuantity;
+  //   }   
+  // }
 
   return (
     <React.Fragment>

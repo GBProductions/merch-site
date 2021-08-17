@@ -15,20 +15,14 @@ class GadgetControl extends React.Component {
     };
   }
 
-  // handleBuyingSelectedGadget = (gadget) => {
-  //   console.log("handleBuyingSelectedGadget reached");
-  //   this.setState(prevState => ({
-  //     newGadgetQuantity: !prevState.
-  //   }));
-
-
-  //   // console.log(id)
-  //   console.log(gadget.quantity);
-  //   this.setState({newGadgetQuantity: 1});
-  //   console.log(this.state)
-  //   // const newGadgetQuantity = this.state.gadgetCollection.filter(gadget => gadget.id === id)[0];
-  //   // this.setState({new})
-  // }
+  handleBuyingSelectedGadget = (gadgetToBuy) => {
+    console.log("handleBuyingSelectedGadget reached");
+    const modifiedGadgetQuantity = this.state.gadgetCollection.filter(gadget => gadget.id !== this.state.selectedGadget.id).concat(gadgetToBuy);
+    this.setState({
+      gadgetCollection: modifiedGadgetQuantity,
+      selectedGadget: gadgetToBuy
+    });
+  }
 
   handleChangingSelectedGadget = (id) => {
     const selectedGadget = this.state.gadgetCollection.filter(gadget => gadget.id === id)[0];
@@ -61,7 +55,7 @@ class GadgetControl extends React.Component {
 
     if (this.state.selectedGadget != null) {
       currentlyVisibleState = <GadgetDetail gadget = {this.state.selectedGadget}
-                                            // onClickingBuy = {this.handleBuyingSelectedGadget} 
+                                            onClickingBuy = {this.handleBuyingSelectedGadget} 
                                             />
       buttonText = "Return to Gadget List"
     }
